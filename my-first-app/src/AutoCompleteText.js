@@ -30,10 +30,10 @@ export default class AutoCompleteText extends React.Component {
             // Here we create a regex to test for matches in the 
             // item's list
             // As it so happens, I've also taken the liberty to name this variable "regex"
-            const regex = new RegExp(`^$(value)`, 'i');
+            const regex = new RegExp(`^${value}`, 'i');
             // This variable will take the contents of the array, sort it alphabetically
             // And then filter so to match the value of regex
-            const suggestions = this.items.sort().filter(v => v.test(regex));
+            suggestions = this.items.sort().filter(v => regex.test(v));
         }
         this.setState(() => ({ suggestions }));
     }
@@ -47,7 +47,7 @@ export default class AutoCompleteText extends React.Component {
         }
         return (
                     <ul>
-                        {this.suggestions.map((item) => <li>{item}</li>)}
+                        {suggestions.map((item) => <li>{item}</li>)}
                     </ul>
                 )
     }
@@ -55,10 +55,8 @@ export default class AutoCompleteText extends React.Component {
     render () {
         return (
                 <div>
-                    <input onChange = {this.onTextChanged} type = "text" />
-                    <ul>
-                        {this.items.map((item) => <li>{item}</li>)}
-                    </ul>
+                    <input onChange={this.onTextChanged} type = "text" />
+                    {this.renderSuggestions()}
                 </div>
             );
     }
