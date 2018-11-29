@@ -7,12 +7,6 @@ import './AutoCompleteText.css';
 export default class AutoCompleteText extends React.Component {
     constructor (props) {
         super(props);
-        this.items = [
-                'David',
-                'Damien',
-                'Sara',
-                'Jane',
-            ];
             // we must use this.state to show the text we entered outside of the JS console
             // the term "state" is simply internal data belonging to an instance of the component it refers to
             // this.state is a special property within react and, in this case, refers to
@@ -26,6 +20,7 @@ export default class AutoCompleteText extends React.Component {
     // The function below is used to handle the user typing into the text box
     // As the user changes the text they write, the search results will also change simultaneously
     onTextChanged = (event) => {
+        const { items } = this.props;
         const value  = event.target.value;
         // initialize suggestions as an empty array
         let suggestions = [];
@@ -36,7 +31,7 @@ export default class AutoCompleteText extends React.Component {
             const regex = new RegExp(`^${value}`, 'i');
             // This variable will take the contents of the array, sort it alphabetically
             // And then filter so to match the value of regex
-            suggestions = this.items.sort().filter(v => regex.test(v));
+            suggestions = items.sort().filter(v => regex.test(v));
         }
         this.setState(() => ({ suggestions, text: value }));
     }
