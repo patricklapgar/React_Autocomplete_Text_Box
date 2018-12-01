@@ -11,9 +11,17 @@
   color: black;
 }
 
+.App-title {
+  margin-top: 80px;
+}
+
+.message {
+  color: black;
+}
+
 .App-header {
   background-color: #282c34;
-  height: 60px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
