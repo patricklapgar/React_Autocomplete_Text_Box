@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import Intro from "../Intro";
 import './App.css';
+import 'whatwg-fetch';
 
 class App extends Component {
   state = {
     series:[]
+  }
+  
+  componentDidMount () {
+    fetch('http://api.tvmaze.com/search/shows?q=Vikings')
+    .then((response) => { console.log(response) })
   }
   
   render() {
