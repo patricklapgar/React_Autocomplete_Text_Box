@@ -9,8 +9,11 @@ class App extends Component {
   }
   
   componentDidMount () {
-    fetch('http://api.tvmaze.com/search/shows?q=Vikings')
-    .then((response) => { console.log(response) })
+    // fetch allows me to chain then methods to return the json format of our results from
+    // the response object
+    window.fetch('https://api.tvmaze.com/search/shows?q=Vikings')
+    .then((response) => response.json())
+    .then(json => this.setState({ series: json }))
   }
   
   render() {
