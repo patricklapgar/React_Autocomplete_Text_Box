@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /*margin-top: 10%;*/
 }
 
 .App-logo {
@@ -15,12 +16,10 @@
   margin-top: 80px;
 }
 
-.message {
-  color: black;
-}
 
 .App-series {
   color: black;
+  margin-top: 25%;
 }
 
 .App-header {
